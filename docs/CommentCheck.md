@@ -50,7 +50,7 @@ try {
     author,
     date: new Date,
     content: "A user comment.",
-    referrer: "https://github.com/cedx/akismet.js",
+    referrer: "https://github.com/CedX/Akismet.js",
     type: CommentType.contactForm
   });
 
@@ -68,5 +68,5 @@ catch (error) {
 }
 ```
 
-See the [source code](https://github.com/cedx/akismet.js/tree/main/src) for detailed information
+See the [source code](https://github.com/CedX/Akismet.js/tree/main/src) for detailed information
 about the `Author`, `Blog` and `Comment` classes, and their properties.

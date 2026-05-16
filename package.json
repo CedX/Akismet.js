@@ -1,11 +1,11 @@
 {
 	"author": "Cédric Belin <cedx@outlook.com>",
-	"bugs": "https://github.com/cedx/akismet.js/issues",
+	"bugs": "https://github.com/CedX/Akismet.js/issues",
 	"description": "Prevent comment spam using the Akismet service.",
-	"homepage": "https://github.com/cedx/akismet.js",
+	"homepage": "https://github.com/CedX/Akismet.js",
 	"license": "MIT",
 	"name": "@cedx/akismet",
-	"repository": "cedx/akismet.js",
+	"repository": "CedX/Akismet.js",
 	"type": "module",
 	"version": "17.1.0",
 	"devDependencies": {

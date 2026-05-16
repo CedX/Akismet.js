@@ -15,7 +15,7 @@ try {
 		author,
 		date: new Date,
 		content: "A user comment.",
-		referrer: "https://github.com/cedx/akismet.js",
+		referrer: "https://github.com/CedX/Akismet.js",
 		type: CommentType.ContactForm
 	});
 
