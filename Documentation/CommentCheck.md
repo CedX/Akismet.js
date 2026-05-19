@@ -68,5 +68,5 @@ catch (error) {
 }
 ```
 
-See the [source code](https://github.com/CedX/Akismet.js/tree/main/src) for detailed information
+See the [source code](https://github.com/CedX/Akismet.js/tree/main/Sources) for detailed information
 about the `Author`, `Blog` and `Comment` classes, and their properties.
