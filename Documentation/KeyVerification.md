@@ -38,7 +38,7 @@ try {
   console.log(isValid ? "The API key is valid." : "The API key is invalid.");
 }
 catch (error) {
-  console.error(error instanceof Error ? error.message : error);
+  console.error(Error.isError(error) ? error.message : error);
 }
 ```
 

@@ -51,7 +51,7 @@ try {
   console.log("The comment was successfully submitted as ham.");
 }
 catch (error) {
-  const message = error instanceof Error ? error.message : String(error);
-  console.error(error instanceof Error ? error.message : error);
+  const message = Error.isError(error) ? error.message : String(error);
+  console.error(Error.isError(error) ? error.message : error);
 }
 ```

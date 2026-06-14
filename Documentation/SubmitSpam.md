@@ -53,6 +53,6 @@ try {
   console.log("The comment was successfully submitted as spam.");
 }
 catch (error) {
-  console.error(error instanceof Error ? error.message : error);
+  console.error(Error.isError(error) ? error.message : error);
 }
 ```
