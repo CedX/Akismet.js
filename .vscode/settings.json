@@ -7,5 +7,11 @@
 	"files.trimTrailingWhitespace": true,
 	"[markdown]": {"files.trimTrailingWhitespace": false},
 	"[powershell]": {"files.encoding": "utf8bom"},
-	"[yaml]": {"editor.insertSpaces": true}
+	"[yaml]": {"editor.insertSpaces": true},
+	"rest-client.environmentVariables": {
+		"Development": {
+			"apiKey": "AKISMET_API_KEY",
+			"baseUrl": "https://rest.akismet.com/1.1"
+		}
+	}
 }
