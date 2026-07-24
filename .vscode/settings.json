@@ -9,9 +9,7 @@
 	"[powershell]": {"files.encoding": "utf8bom"},
 	"[yaml]": {"editor.insertSpaces": true},
 	"rest-client.environmentVariables": {
-		"Development": {
-			"apiKey": "AKISMET_API_KEY",
-			"baseUrl": "https://rest.akismet.com/1.1"
-		}
+		"$shared": {"baseUrl": "https://rest.akismet.com/1.1"},
+		"Development": {"apiKey": "AKISMET_API_KEY"}
 	}
 }
