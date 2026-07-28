@@ -62,7 +62,7 @@ export class Client {
 	 * @returns A value indicating whether the specified comment is spam.
 	 */
 	async checkComment(comment: Comment): Promise<CheckResult> {
-		const response = await this.#fetch("1.1/comment-check", comment.toJSON());
+		const response = await this.#post("1.1/comment-check", comment.toJSON());
 		if (await response.text() == "false") return CheckResult.Ham;
 		return response.headers.get("X-akismet-pro-tip") == "discard" ? CheckResult.PervasiveSpam : CheckResult.Spam;
 	}
@@ -73,7 +73,7 @@ export class Client {
 	 * @returns Resolves once the comment has been submitted.
 	 */
 	async submitHam(comment: Comment): Promise<void> {
-		const response = await this.#fetch("1.1/submit-ham", comment.toJSON());
+		const response = await this.#post("1.1/submit-ham", comment.toJSON());
 		if (await response.text() != success) throw new Error("Invalid server response.");
 	}
 
@@ -83,7 +83,7 @@ export class Client {
 	 * @returns Resolves once the comment has been submitted.
 	 */
 	async submitSpam(comment: Comment): Promise<void> {
-		const response = await this.#fetch("1.1/submit-spam", comment.toJSON());
+		const response = await this.#post("1.1/submit-spam", comment.toJSON());
 		if (await response.text() != success) throw new Error("Invalid server response.");
 	}
 
@@ -92,7 +92,7 @@ export class Client {
 	 * @returns `true` if the specified API key is valid, otherwise `false`.
 	 */
 	async verifyKey(): Promise<boolean> {
-		const response = await this.#fetch("1.1/verify-key");
+		const response = await this.#post("1.1/verify-key");
 		return await response.text() == "valid";
 	}
 
@@ -102,7 +102,7 @@ export class Client {
 	 * @param fields The fields describing the query body.
 	 * @returns The server response.
 	 */
-	async #fetch(endPoint: string, fields: Record<string, any> = {}): Promise<Response> {
+	async #post(endPoint: string, fields: Record<string, any> = {}): Promise<Response> {
 		const body = new URLSearchParams({...this.blog.toJSON(), api_key: this.apiKey});
 		if (this.isTest) body.set("is_test", "1");
 
