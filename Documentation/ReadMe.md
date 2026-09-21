@@ -9,7 +9,7 @@ Add Akismet to your [JavaScript](https://developer.mozilla.org/docs/Web/JavaScri
 ## Quick start
 Install the latest version of **Akismet for JS** with [npm](https://getcomposer.org) package manager:
 
-```shell
+```powershell
 npm install @cedx/akismet
 ```
 
