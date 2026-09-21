@@ -1,7 +1,7 @@
 # Submit Spam
 This call is for submitting comments that weren't marked as spam but should have been.
 
-```ts
+```typescript
 Client.submitSpam(comment: Comment): Promise<void>
 ```
 
@@ -33,7 +33,7 @@ See [Response Error Codes](https://akismet.com/developers/detailed-docs/errors) 
 
 ## Example
 
-```js
+```typescript
 import console from "node:console";
 import {Author, Blog, Client, Comment} from "@cedx/akismet";
 
