@@ -10,8 +10,12 @@
 	"version": "17.1.0",
 	"devDependencies": {
 		"@eslint/js": "^10.0.1",
-		"@types/node": "^26.6.4",
+		"@types/chai": "^5.2.3",
+		"@types/mocha": "^10.0.10",
+		"@types/node": "^26.6.5",
 		"@typescript/native": "npm:typescript@^7.0.2",
+		"chai": "^6.3.0",
+		"mocha": "^12.0.3",
 		"typescript": "npm:@typescript/typescript6@^6.0.2",
 		"typescript-eslint": "^8.71.1"
 	},
