@@ -1,5 +1,4 @@
 import {Blog} from "@cedx/akismet";
-import "chai/register-should.js";
 
 /**
  * Tests the features of the {@link Blog} class.

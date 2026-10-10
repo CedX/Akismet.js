@@ -1,15 +1,10 @@
 import {Author, AuthorRole, Blog, CheckResult, Client, Comment, CommentType} from "@cedx/akismet";
-import {use} from "chai";
-import chaiAsPromised from "chai-as-promised";
-import "chai/register-should.js";
 import {env} from "node:process";
 
 /**
  * Tests the features of the {@link Client} class.
  */
 describe("Client", () => {
-	use(chaiAsPromised);
-
 	// The client used to query the remote API.
 	const client = new Client(env.AKISMET_API_KEY ?? "", new Blog({url: "https://github.com/CedX/Akismet.js"}), {isTest: true});
 

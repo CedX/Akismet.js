@@ -47,7 +47,7 @@ function Invoke-Mocha {
 	)
 
 	$testDirectory = Join-Path $PSScriptRoot "../Tests" -Resolve
-	npx mocha --config $Configuration $testDirectory
+	npx mocha --config $Configuration --file "$testDirectory/Should.js" $testDirectory
 }
 
 <#

@@ -1,5 +1,4 @@
 import {Author, Comment, CommentType} from "@cedx/akismet";
-import "chai/register-should.js";
 
 /**
  * Tests the features of the {@link Comment} class.
