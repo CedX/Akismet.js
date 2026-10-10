@@ -11,7 +11,7 @@ export class Blog {
 	/**
 	 * The languages in use on the blog or site, in ISO 639-1 format.
 	 */
-	languages: Set<string>;
+	languages: string[];
 
 	/**
 	 * The blog or site URL.
@@ -24,7 +24,7 @@ export class Blog {
 	 */
 	constructor(options: BlogOptions = {}) {
 		this.charset = options.charset ?? "";
-		this.languages = new Set(options.languages ?? []);
+		this.languages = options.languages ?? [];
 		this.url = options.url ? new URL(options.url) : null;
 	}
 
@@ -32,10 +32,10 @@ export class Blog {
 	 * Returns a JSON representation of this object.
 	 * @returns The JSON representation of this object.
 	 */
-	toJSON(): Record<string, any> {
-		const map: Record<string, any> = {blog: this.url?.href ?? ""};
+	toJSON(): Record<string, string> {
+		const map: Record<string, string> = {blog: this.url?.href ?? ""};
 		if (this.charset) map.blog_charset = this.charset;
-		if (this.languages.size) map.blog_lang = Array.from(this.languages).join(",");
+		if (this.languages.length) map.blog_lang = this.languages.join(",");
 		return map;
 	}
 }
@@ -43,20 +43,10 @@ export class Blog {
 /**
  * Defines the options of a {@link Blog} instance.
  */
-export type BlogOptions = Partial<{
-
-	/**
-	 * The character encoding for the values included in comments.
-	 */
-	charset: string;
-
-	/**
-	 * The languages in use on the blog or site, in ISO 639-1 format.
-	 */
-	languages: string[];
+export type BlogOptions = Partial<Omit<Blog, "toJSON"|"url"> & {
 
 	/**
 	 * The blog or site URL.
 	 */
-	url: URL|string;
+	url: URL|string|null;
 }>;

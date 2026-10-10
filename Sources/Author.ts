@@ -50,8 +50,8 @@ export class Author {
 	 * Returns a JSON representation of this object.
 	 * @returns The JSON representation of this object.
 	 */
-	toJSON(): Record<string, any> {
-		const map: Record<string, any> = {user_ip: this.ipAddress};
+	toJSON(): Record<string, string> {
+		const map: Record<string, string> = {user_ip: this.ipAddress};
 		if (this.email) map.comment_author_email = this.email;
 		if (this.name) map.comment_author = this.name;
 		if (this.role) map.user_role = this.role;
@@ -69,7 +69,7 @@ export type AuthorOptions = Partial<Omit<Author, "toJSON"|"url"> & {
 	/**
 	 * The URL of the author's website.
 	 */
-	url: URL|string;
+	url: URL|string|null;
 }>;
 
 /**

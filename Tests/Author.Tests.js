@@ -1,16 +1,15 @@
 import {Author} from "@cedx/akismet";
-import {equal} from "node:assert/strict";
-import {describe, it} from "node:test";
+import "chai/register-should.js";
 
 /**
  * Tests the features of the {@link Author} class.
  */
 describe("Author", () => {
-	describe("toJSON()", () => {
+	context("toJSON()", () => {
 		it("should return only the IP address with a newly created instance", () => {
 			const json = new Author({ipAddress: "127.0.0.1"}).toJSON();
-			equal(Object.keys(json).length, 1);
-			equal(json.user_ip, "127.0.0.1");
+			Object.keys(json).should.have.lengthOf(1);
+			json.user_ip.should.equal("127.0.0.1");
 		});
 
 		it("should return a non-empty map with an initialized instance", () => {
@@ -22,12 +21,12 @@ describe("Author", () => {
 				userAgent: "Mozilla/5.0"
 			}).toJSON();
 
-			equal(Object.keys(json).length, 5);
-			equal(json.comment_author, "Cédric Belin");
-			equal(json.comment_author_email, "contact@cedric-belin.fr");
-			equal(json.comment_author_url, "https://cedric-belin.fr/");
-			equal(json.user_agent, "Mozilla/5.0");
-			equal(json.user_ip, "192.168.0.1");
+			Object.keys(json).should.have.lengthOf(5);
+			json.comment_author.should.equal("Cédric Belin");
+			json.comment_author_email.should.equal("contact@cedric-belin.fr");
+			json.comment_author_url.should.equal("https://cedric-belin.fr/");
+			json.user_agent.should.equal("Mozilla/5.0");
+			json.user_ip.should.equal("192.168.0.1");
 		});
 	});
 });

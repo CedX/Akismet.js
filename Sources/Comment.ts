@@ -70,7 +70,7 @@ export class Comment {
 	 * Returns a JSON representation of this object.
 	 * @returns The JSON representation of this object.
 	 */
-	toJSON(): Record<string, any> {
+	toJSON(): Record<string, string> {
 		const map = this.author ? this.author.toJSON() : {};
 		if (this.content) map.comment_content = this.content;
 		// TODO if (this.context.length) map.comment_context = this.context;
@@ -92,12 +92,12 @@ export type CommentOptions = Partial<Omit<Comment, "permalink"|"referrer"|"toJSO
 	/**
 	 * The permanent location of the entry the comment is submitted to.
 	 */
-	permalink: URL|string;
+	permalink: URL|string|null;
 
 	/**
 	 * The URL of the webpage that linked to the entry being requested.
 	 */
-	referrer: URL|string;
+	referrer: URL|string|null;
 }>;
 
 /**

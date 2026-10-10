@@ -1,5 +1,6 @@
 import js from "@eslint/js";
 import {defineConfig} from "eslint/config";
+import globals from "globals";
 import ts from "typescript-eslint";
 
 export default defineConfig(
@@ -8,6 +9,7 @@ export default defineConfig(
 	...ts.configs.stylisticTypeChecked,
 	{
 		languageOptions: {
+			globals: {...globals.mocha},
 			parserOptions: {project: true}
 		},
 		rules: {

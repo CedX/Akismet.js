@@ -1,16 +1,15 @@
 import {Author, Comment, CommentType} from "@cedx/akismet";
-import {equal} from "node:assert/strict";
-import {describe, it} from "node:test";
+import "chai/register-should.js";
 
 /**
  * Tests the features of the {@link Comment} class.
  */
 describe("Comment", () => {
-	describe("toJSON()", () => {
+	context("toJSON()", () => {
 		it("should return only the author info with a newly created instance", () => {
 			const json = new Comment({author: new Author({ipAddress: "127.0.0.1"})}).toJSON();
-			equal(Object.keys(json).length, 1);
-			equal(json.user_ip, "127.0.0.1");
+			Object.keys(json).should.have.lengthOf(1);
+			json.user_ip.should.equal("127.0.0.1");
 		});
 
 		it("should return a non-empty map with an initialized instance", () => {
@@ -22,14 +21,14 @@ describe("Comment", () => {
 				type: CommentType.BlogPost
 			}).toJSON();
 
-			equal(Object.keys(json).length, 7);
-			equal(json.comment_author, "Cédric Belin");
-			equal(json.comment_content, "A user comment.");
-			equal(json.comment_date_gmt, "2000-01-01T00:00:00.000Z");
-			equal(json.comment_type, "blog-post");
-			equal(json.referrer, "https://cedric-belin.fr/");
-			equal(json.user_agent, "Doom/6.6.6");
-			equal(json.user_ip, "127.0.0.1");
+			Object.keys(json).should.have.lengthOf(7);
+			json.comment_author.should.equal("Cédric Belin");
+			json.comment_content.should.equal("A user comment.");
+			json.comment_date_gmt.should.equal("2000-01-01T00:00:00.000Z");
+			json.comment_type.should.equal("blog-post");
+			json.referrer.should.equal("https://cedric-belin.fr/");
+			json.user_agent.should.equal("Doom/6.6.6");
+			json.user_ip.should.equal("127.0.0.1");
 		});
 	});
 });

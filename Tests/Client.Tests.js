@@ -1,12 +1,15 @@
 import {Author, AuthorRole, Blog, CheckResult, Client, Comment, CommentType} from "@cedx/akismet";
-import {doesNotReject, equal, ok} from "node:assert/strict";
+import {use} from "chai";
+import chaiAsPromised from "chai-as-promised";
+import "chai/register-should.js";
 import {env} from "node:process";
-import {describe, it} from "node:test";
 
 /**
  * Tests the features of the {@link Client} class.
  */
 describe("Client", () => {
+	use(chaiAsPromised);
+
 	// The client used to query the remote API.
 	const client = new Client(env.AKISMET_API_KEY ?? "", new Blog({url: "https://github.com/CedX/Akismet.js"}), {isTest: true});
 
@@ -36,28 +39,27 @@ describe("Client", () => {
 		type: CommentType.BlogPost
 	});
 
-	describe("checkComment()", () => {
+	context("checkComment()", () => {
 		it("should return `CheckResult.Ham` for valid comment (e.g. ham)", async () =>
-			equal(await client.checkComment(ham), CheckResult.Ham));
+			(await client.checkComment(ham)).should.equal(CheckResult.Ham));
 
 		it("should return `CheckResult.Spam` for invalid comment (e.g. spam)", async () => {
-			/** @type {Set<CheckResult>} */
-			const isSpam = new Set([CheckResult.Spam, CheckResult.PervasiveSpam]);
-			ok(isSpam.has(await client.checkComment(spam)));
+			const isSpam = [CheckResult.Spam, CheckResult.PervasiveSpam];
+			(await client.checkComment(spam)).should.be.oneOf(isSpam);
 		});
 	});
 
-	describe("submitHam()", () =>
-		it("should complete without any error", () => doesNotReject(client.submitHam(ham))));
+	context("submitHam()", () =>
+		it("should complete without any error", () => client.submitHam(ham).should.be.fulfilled));
 
-	describe("submitSpam()", () =>
-		it("should complete without any error", () => doesNotReject(client.submitSpam(spam))));
+	context("submitSpam()", () =>
+		it("should complete without any error", () => client.submitSpam(spam).should.be.fulfilled));
 
-	describe("verifyKey()", () => {
+	context("verifyKey()", () => {
 		it("should return `true` for a valid API key", async () =>
-			ok(await client.verifyKey()));
+			(await client.verifyKey()).should.be.true);
 
 		it("should return `false` for an invalid API key", async () =>
-			equal(await new Client("0123456789AB", client.blog, {isTest: true}).verifyKey(), false));
+			(await new Client("0123456789AB", client.blog, {isTest: true}).verifyKey()).should.be.false);
 	});
 });

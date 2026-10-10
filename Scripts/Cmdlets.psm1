@@ -36,10 +36,18 @@ function Invoke-ESLint {
 
 <#
 .SYNOPSIS
-	Invokes the Node.js test runner.
+	Invokes the Mocha test runner.
 #>
-function Invoke-NodeTest {
-	node --enable-source-maps --test "$PSScriptRoot/../Tests/**/*.Tests.js"
+function Invoke-Mocha {
+	param (
+		# The path to the configuration file.
+		[Parameter(Mandatory, Position = 1)]
+		[ValidateScript({ Test-Path $_ -PathType Leaf }, ErrorMessage = "The specified configuration file does not exist.")]
+		[string] $Configuration
+	)
+
+	$testDirectory = Join-Path $PSScriptRoot "../Tests" -Resolve
+	npx mocha --config $Configuration $testDirectory
 }
 
 <#
