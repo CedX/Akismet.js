@@ -108,7 +108,7 @@ export default defineConfig(
 			"no-unmodified-loop-condition": "error",
 			"no-unneeded-ternary": "error",
 			"no-unreachable-loop": "error",
-			"no-unused-expressions": "error",
+			"no-unused-expressions": "off",
 			"no-use-before-define": "off",
 			"no-useless-assignment": "error",
 			"no-useless-call": "error",
