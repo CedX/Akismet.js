@@ -40,12 +40,12 @@ describe("Client", () => {
 	});
 
 	context("checkComment()", () => {
-		it("should return `CheckResult.Ham` for valid comment (e.g. ham)", async () =>
-			(await client.checkComment(ham)).should.equal(CheckResult.Ham));
+		it("should return `CheckResult.Ham` for valid comment (e.g. ham)", () =>
+			client.checkComment(ham).should.eventually.equal(CheckResult.Ham));
 
-		it("should return `CheckResult.Spam` for invalid comment (e.g. spam)", async () => {
+		it("should return `CheckResult.Spam` for invalid comment (e.g. spam)", () => {
 			const isSpam = [CheckResult.Spam, CheckResult.PervasiveSpam];
-			(await client.checkComment(spam)).should.be.oneOf(isSpam);
+			return client.checkComment(spam).should.eventually.be.oneOf(isSpam);
 		});
 	});
 
@@ -56,10 +56,10 @@ describe("Client", () => {
 		it("should complete without any error", () => client.submitSpam(spam).should.be.fulfilled));
 
 	context("verifyKey()", () => {
-		it("should return `true` for a valid API key", async () =>
-			(await client.verifyKey()).should.be.true);
+		it("should return `true` for a valid API key", () =>
+			client.verifyKey().should.eventually.be.true);
 
-		it("should return `false` for an invalid API key", async () =>
-			(await new Client("0123456789AB", client.blog, {isTest: true}).verifyKey()).should.be.false);
+		it("should return `false` for an invalid API key", () =>
+			new Client("0123456789AB", client.blog, {isTest: true}).verifyKey().should.eventually.be.false);
 	});
 });
