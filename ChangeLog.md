@@ -1,5 +1,10 @@
 # Changelog
 
+## Version [2026.10.0](https://github.com/CedX/Akismet.js/compare/v17.1.0...v2026.10.0)
+- Breaking change: raised the required [Node.js](https://nodejs.org) version.
+- Breaking change: removed the `fromJson()` static methods.
+- Switched to a year-based versioning.
+
 ## Version [17.1.0](https://github.com/CedX/Akismet.js/compare/v17.0.1...v17.1.0)
 - Ported the source code to [TypeScript](https://www.typescriptlang.org).
 

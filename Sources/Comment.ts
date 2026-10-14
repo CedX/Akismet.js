@@ -85,7 +85,7 @@ export class Comment {
 }
 
 /**
- * Defines the options of an {@link Author} instance.
+ * Defines the options of a {@link Comment} instance.
  */
 export type CommentOptions = Partial<Omit<Comment, "permalink"|"referrer"|"toJSON"> & {
 
