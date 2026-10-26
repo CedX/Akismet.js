@@ -1,10 +1,6 @@
 name: ContinuousIntegration
 on: push
 
-defaults:
-  run:
-    shell: pwsh
-
 jobs:
   Test:
     runs-on: windows-latest
@@ -16,8 +12,8 @@ jobs:
         with:
           node-version: latest
       - name: Install dependencies
-        run: ./Invoke.ps1 Install
+        run: node Scripts/Install.js
       - name: Run tests
-        run: ./Invoke.ps1 Test
+        run: node Scripts/Test.js
         env:
           AKISMET_API_KEY: ${{secrets.AKISMET_API_KEY}}
