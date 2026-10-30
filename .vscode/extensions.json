@@ -1,6 +1,5 @@
 {
 	"recommendations": [
-		"humao.rest-client",
-		"ms-vscode.powershell"
+		"humao.rest-client"
 	]
 }
